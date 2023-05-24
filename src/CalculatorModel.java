@@ -26,4 +26,12 @@ public class CalculatorModel {
         numberFormat.setMaximumFractionDigits(8);
         return numberFormat.format(answer);
     }
+
+    public float getAnswerFloat() {
+        return answer;
+    }
+
+    void setAnswerFloat(float ans) {
+        answer = ans;
+    }
 }
