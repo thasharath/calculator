@@ -82,29 +82,32 @@ public class CalculatorView extends JFrame {
     }
 
 
-    public int getNumOne() {
-        return Integer.parseInt(numOne.getText());
+    public float getNumOne() {
+        return Float.parseFloat(numOne.getText());
     }
 
 
-    public int getNumTwo() {
-        return Integer.parseInt(numTwo.getText());
+    public float getNumTwo() {
+        return Float.parseFloat(numTwo.getText());
     }
 
 
-    public int getSolution() {
-        return Integer.parseInt(solution.getText());
-    }
+//    public float getSolution() {
+//        return Float.parseFloat(solution.getText());
+//    }
 
+
+//    public void setSolution(float s) {
+//        solution.setText(Float.toString(s));
+//    }
 
     public void setSolution(String s) {
         solution.setText(s);
     }
 
-
-    public void setSolutionFloat(String s) {
-        solution.setText(s);
-    }
+//    public void setSolutionFloat(String s) {
+//        solution.setText(s);
+//    }
 
 
     void addCalculateListener(ActionListener listenForAddButton) {
