@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.UIManager.*;
 import javax.swing.border.Border;
 
 
@@ -30,50 +29,37 @@ public class CalculatorView extends JFrame {
         JPanel panelButtons = new JPanel();
         JPanel panelSolution = new JPanel();
 
+        setComponentProperties(numOne, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE);
+        setComponentProperties(numTwo, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE);
+        setComponentProperties(solution, new Font("Fira Code", Font.PLAIN, 24), new RoundedBorder(7), Color.WHITE);
+        setComponentProperties(addButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
+        setComponentProperties(subButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
+        setComponentProperties(mulButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
+        setComponentProperties(divButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
 
-        numOne.setFont(new java.awt.Font("Fira Code", 0, 22));
+
         numOne.setHorizontalAlignment(SwingConstants.RIGHT);
-
-        numTwo.setFont(new java.awt.Font("Fira Code", 0, 22));
         numTwo.setHorizontalAlignment(SwingConstants.RIGHT);
-
         solution.setHorizontalAlignment(SwingConstants.RIGHT);
-        solution.setFont(new java.awt.Font("Fira Code", 0, 24));
-
-        addButton.setFont(new java.awt.Font("Fira Code", 1, 22));
-        addButton.setBorder(new RoundedBorder(7));
-        addButton.setBackground(new Color(0xf59806));
-
-        subButton.setFont(new java.awt.Font("Fira Code", 1, 22));
-        subButton.setBorder(new RoundedBorder(7));
-        subButton.setBackground(new Color(0xf59806));
-
-        mulButton.setFont(new java.awt.Font("Fira Code", 1, 22));
-        mulButton.setBorder(new RoundedBorder(7));
-        mulButton.setBackground(new Color(0xf59806));
-
-        divButton.setFont(new java.awt.Font("Fira Code", 1, 22));
-        divButton.setBorder(new RoundedBorder(7));
-        divButton.setBackground(new Color(0xf59806));
 
 
-        panelNumbers.setBackground(Color.GRAY);
+//        panelNumbers.setBackground(Color.GRAY);
         panelNumbers.add(numOne);
         panelNumbers.add(numTwo);
 
-        panelButtons.setBackground(Color.GRAY);
+//        panelButtons.setBackground(Color.GRAY);
         panelButtons.add(addButton);
         panelButtons.add(subButton);
         panelButtons.add(mulButton);
         panelButtons.add(divButton);
 
-        panelSolution.setBackground(Color.GRAY);
+//        panelSolution.setBackground(Color.GRAY);
         panelSolution.add(solution);
 
 
         this.setTitle("Calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(280, 180);
+        this.setSize(300, 200);
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(3, 1));
         this.add(panelNumbers);
@@ -86,46 +72,35 @@ public class CalculatorView extends JFrame {
         return Float.parseFloat(numOne.getText());
     }
 
-
     public float getNumTwo() {
         return Float.parseFloat(numTwo.getText());
     }
-
-
-//    public float getSolution() {
-//        return Float.parseFloat(solution.getText());
-//    }
-
-
-//    public void setSolution(float s) {
-//        solution.setText(Float.toString(s));
-//    }
 
     public void setSolution(String s) {
         solution.setText(s);
     }
 
-//    public void setSolutionFloat(String s) {
-//        solution.setText(s);
-//    }
 
-
-    void addCalculateListener(ActionListener listenForAddButton) {
-        addButton.addActionListener(listenForAddButton);
+    public JButton getAddButton() {
+        return addButton;
     }
 
+    public JButton getSubButton() {
+        return subButton;
+    }
 
-    void subCalculateListener(ActionListener listen) {
+    public JButton getMulButton() {
+        return mulButton;
+    }
+
+    public JButton getDivButton() {
+        return divButton;
+    }
+
+    void listener(ActionListener listen) {
+        addButton.addActionListener(listen);
         subButton.addActionListener(listen);
-    }
-
-
-    void mulCalculateListener(ActionListener listen) {
         mulButton.addActionListener(listen);
-    }
-
-
-    void divCalculateListener(ActionListener listen) {
         divButton.addActionListener(listen);
     }
 
@@ -154,5 +129,12 @@ public class CalculatorView extends JFrame {
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             g.drawRoundRect(x, y, width - 1, height - 1, radius + 1, radius + 1);
         }
+    }
+
+    // Method to set properties for multiple components
+    private void setComponentProperties(JComponent component, Font font, Border border, Color background) {
+        component.setFont(font);
+        component.setBorder(border);
+        component.setBackground(background);
     }
 }

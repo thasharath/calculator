@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,72 +10,32 @@ public class CalculatorController {
         this.theView = theView;
         this.theModel = theModel;
 
-        this.theView.addCalculateListener(new AddListener());
-        this.theView.subCalculateListener(new SubListener());
-        this.theView.mulCalculateListener(new MulListener());
-        this.theView.divCalculateListener(new DivListener());
+        this.theView.listener(new CalculatorListener());
     }
 
-    class AddListener implements ActionListener {
+    class CalculatorListener implements ActionListener {
+        @Override
         public void actionPerformed(ActionEvent e) {
             float numOne, numTwo = 0;
 
             try {
                 numOne = theView.getNumOne();
                 numTwo = theView.getNumTwo();
-                theModel.addTwoNumbers(numOne, numTwo);
+
+                if (e.getSource() == theView.getAddButton()) {
+                    theModel.addTwoNumbers(numOne, numTwo);
+                } else if (e.getSource() == theView.getSubButton()) {
+                    theModel.subTwoNumbers(numOne, numTwo);
+                } else if (e.getSource() == theView.getMulButton()) {
+                    theModel.mulTwoNumbers(numOne, numTwo);
+                } else if (e.getSource() == theView.getDivButton()) {
+                    theModel.divTwoNumbers(numOne, numTwo);
+                }
+
                 theView.setSolution(theModel.getAnswer());
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 integers");
-            }
-        }
-    }
-
-    class SubListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            float numOne, numTwo = 0;
-
-            try {
-                numOne = theView.getNumOne();
-                numTwo = theView.getNumTwo();
-                theModel.subTwoNumbers(numOne, numTwo);
-                theView.setSolution(theModel.getAnswer());
-            } catch (NumberFormatException ex) {
-                System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 integers");
-            }
-        }
-    }
-
-    class MulListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            float numOne, numTwo = 0;
-
-            try {
-                numOne = theView.getNumOne();
-                numTwo = theView.getNumTwo();
-                theModel.mulTwoNumbers(numOne, numTwo);
-                theView.setSolution(theModel.getAnswer());
-            } catch (NumberFormatException ex) {
-                System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 integers");
-            }
-        }
-    }
-
-    class DivListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            float numOne, numTwo = 0;
-
-            try {
-                numOne = theView.getNumOne();
-                numTwo = theView.getNumTwo();
-                theModel.divTwoNumbers(numOne, numTwo);
-                theView.setSolution(theModel.getAnswer());
-            } catch (NumberFormatException ex) {
-                System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 integers");
+                theView.displayErrorMessage("Enter 2 Valid Numbers!!");
             }
         }
     }
