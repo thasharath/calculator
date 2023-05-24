@@ -1,10 +1,8 @@
 import java.text.NumberFormat;
-import java.util.Locale;
 
 public class CalculatorModel {
 
     private float answer;
-//    private float answerFloat;
 
     NumberFormat numberFormat = NumberFormat.getInstance();
 
@@ -25,13 +23,7 @@ public class CalculatorModel {
     }
 
     public String getAnswer() {
-        numberFormat.setMaximumFractionDigits(4);
+        numberFormat.setMaximumFractionDigits(8);
         return numberFormat.format(answer);
-
-//        return answer;
     }
-
-//    public String getAnswerFloat() {
-//        return numberFormat.format(answerFloat);
-//    }
 }

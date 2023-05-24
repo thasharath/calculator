@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import javax.swing.UIManager.*;
 import javax.swing.border.Border;
 
 
@@ -73,46 +72,35 @@ public class CalculatorView extends JFrame {
         return Float.parseFloat(numOne.getText());
     }
 
-
     public float getNumTwo() {
         return Float.parseFloat(numTwo.getText());
     }
-
-
-//    public float getSolution() {
-//        return Float.parseFloat(solution.getText());
-//    }
-
-
-//    public void setSolution(float s) {
-//        solution.setText(Float.toString(s));
-//    }
 
     public void setSolution(String s) {
         solution.setText(s);
     }
 
-//    public void setSolutionFloat(String s) {
-//        solution.setText(s);
-//    }
 
-
-    void addCalculateListener(ActionListener listenForAddButton) {
-        addButton.addActionListener(listenForAddButton);
+    public JButton getAddButton() {
+        return addButton;
     }
 
+    public JButton getSubButton() {
+        return subButton;
+    }
 
-    void subCalculateListener(ActionListener listen) {
+    public JButton getMulButton() {
+        return mulButton;
+    }
+
+    public JButton getDivButton() {
+        return divButton;
+    }
+
+    void listener(ActionListener listen) {
+        addButton.addActionListener(listen);
         subButton.addActionListener(listen);
-    }
-
-
-    void mulCalculateListener(ActionListener listen) {
         mulButton.addActionListener(listen);
-    }
-
-
-    void divCalculateListener(ActionListener listen) {
         divButton.addActionListener(listen);
     }
 

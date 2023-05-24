@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Calculator {
     public static void main(String[] args) {
         CalculatorView view = new CalculatorView();
@@ -7,9 +5,5 @@ public class Calculator {
         CalculatorController controller = new CalculatorController(view, model);
 
         view.setVisible(true);
-
-
-
-
     }
 }
