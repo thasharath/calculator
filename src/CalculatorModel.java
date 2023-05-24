@@ -19,6 +19,11 @@ public class CalculatorModel {
     }
 
     public void divTwoNumbers(float numOne, float numTwo) {
+        // Check if divider is zero
+        if (numTwo == 0) {
+            throw new ArithmeticException("Cannot Divide By Zero!");
+        }
+
         answer = numOne / numTwo;
     }
 

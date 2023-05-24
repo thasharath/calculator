@@ -13,6 +13,7 @@ public class CalculatorView extends JFrame {
     private final JButton mulButton = new JButton("x");
     private final JButton divButton = new JButton("/");
     private final JButton percentButton = new JButton("%");
+    private final JButton acButton = new JButton("AC");
     private final JTextField solution = new JTextField(16);
 
     public CalculatorView() {
@@ -30,6 +31,7 @@ public class CalculatorView extends JFrame {
         setComponentProperties(mulButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(divButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(percentButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
+        setComponentProperties(acButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
 
         numOne.setHorizontalAlignment(SwingConstants.RIGHT);
         numTwo.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -47,11 +49,12 @@ public class CalculatorView extends JFrame {
         panelButtons.add(percentButton);
 
         panelSolution.add(solution);
+        panelSolution.add(acButton);
 
         // Frame settings
         this.setTitle("Calculator");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(300, 200);
+        this.setSize(350, 200);
         this.setLocationRelativeTo(null);
         this.setLayout(new GridLayout(3, 1));
         this.add(panelNumbers);
@@ -102,6 +105,17 @@ public class CalculatorView extends JFrame {
         percentButton.addActionListener(listen);
     }
 
+    // Action listener for clear button
+    public void acListener(ActionListener listen) {
+        acButton.addActionListener(listen);
+    }
+
+    // method to clear all text fields
+    public void allClear() {
+        numOne.setText("");
+        numTwo.setText("");
+        solution.setText("");
+    }
 
     void displayErrorMessage(String errorMessage) {
         JOptionPane.showMessageDialog(this, errorMessage);

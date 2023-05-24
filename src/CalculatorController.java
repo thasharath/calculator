@@ -11,6 +11,7 @@ public class CalculatorController {
         this.theModel = theModel;
 
         this.theView.listener(new CalculatorListener());
+        this.theView.acListener(actionEvent -> theView.allClear());
     }
 
     class CalculatorListener implements ActionListener {
@@ -39,9 +40,13 @@ public class CalculatorController {
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("Enter 2 Valid Numbers!!");
+            } catch (ArithmeticException ex) {
+                theView.displayErrorMessage(ex.getMessage());
             }
 
 
         }
     }
+
+
 }
