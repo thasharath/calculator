@@ -3,32 +3,35 @@ import java.util.Locale;
 
 public class CalculatorModel {
 
-    private int answer;
-    private float answerFloat;
+    private float answer;
+//    private float answerFloat;
 
-    NumberFormat numberFormat = NumberFormat.getInstance(Locale.US);
+    NumberFormat numberFormat = NumberFormat.getInstance();
 
-    public void addTwoNumbers(int numOne, int numTwo) {
+    public void addTwoNumbers(float numOne, float numTwo) {
         answer = numOne + numTwo;
     }
 
-    public void subTwoNumbers(int numOne, int numTwo) {
+    public void subTwoNumbers(float numOne, float numTwo) {
         answer = numOne - numTwo;
     }
 
-    public void mulTwoNumbers(int numOne, int numTwo) {
+    public void mulTwoNumbers(float numOne, float numTwo) {
         answer = numOne * numTwo;
     }
 
     public void divTwoNumbers(float numOne, float numTwo) {
-        answerFloat = numOne / numTwo;
+        answer = numOne / numTwo;
     }
 
     public String getAnswer() {
+        numberFormat.setMaximumFractionDigits(4);
         return numberFormat.format(answer);
+
+//        return answer;
     }
 
-    public String getAnswerFloat() {
-        return numberFormat.format(answerFloat);
-    }
+//    public String getAnswerFloat() {
+//        return numberFormat.format(answerFloat);
+//    }
 }
