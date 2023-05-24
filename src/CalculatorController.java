@@ -11,32 +11,42 @@ public class CalculatorController {
         this.theModel = theModel;
 
         this.theView.listener(new CalculatorListener());
+        this.theView.acListener(actionEvent -> theView.allClear());
     }
 
     class CalculatorListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent event) {
             float numOne, numTwo = 0;
+
 
             try {
                 numOne = theView.getNumOne();
                 numTwo = theView.getNumTwo();
 
-                if (e.getSource() == theView.getAddButton()) {
+                if (event.getSource() == theView.getAddButton()) {
                     theModel.addTwoNumbers(numOne, numTwo);
-                } else if (e.getSource() == theView.getSubButton()) {
+                } else if (event.getSource() == theView.getSubButton()) {
                     theModel.subTwoNumbers(numOne, numTwo);
-                } else if (e.getSource() == theView.getMulButton()) {
+                } else if (event.getSource() == theView.getMulButton()) {
                     theModel.mulTwoNumbers(numOne, numTwo);
-                } else if (e.getSource() == theView.getDivButton()) {
+                } else if (event.getSource() == theView.getDivButton()) {
                     theModel.divTwoNumbers(numOne, numTwo);
+                } else if (event.getSource() == theView.getPercentButton()) {
+                    theModel.setAnswerFloat(theModel.getAnswerFloat() / 100);
                 }
 
                 theView.setSolution(theModel.getAnswer());
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("Enter 2 Valid Numbers!!");
+            } catch (ArithmeticException ex) {
+                theView.displayErrorMessage(ex.getMessage());
             }
+
+
         }
     }
+
+
 }

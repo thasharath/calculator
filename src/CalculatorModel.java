@@ -19,11 +19,24 @@ public class CalculatorModel {
     }
 
     public void divTwoNumbers(float numOne, float numTwo) {
+        // Check if divider is zero
+        if (numTwo == 0) {
+            throw new ArithmeticException("Cannot Divide By Zero!");
+        }
+
         answer = numOne / numTwo;
     }
 
     public String getAnswer() {
         numberFormat.setMaximumFractionDigits(8);
         return numberFormat.format(answer);
+    }
+
+    public float getAnswerFloat() {
+        return answer;
+    }
+
+    void setAnswerFloat(float ans) {
+        answer = ans;
     }
 }
