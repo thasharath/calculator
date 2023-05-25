@@ -23,19 +23,18 @@ public class CalculatorView extends JFrame {
         JPanel panelSolution = new JPanel();
 
         // Setting the properties for the button, textbox components
-        setComponentProperties(numOne, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE);
-        setComponentProperties(numTwo, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE);
-        setComponentProperties(solution, new Font("Fira Code", Font.PLAIN, 24), new RoundedBorder(7), Color.WHITE);
+        setComponentProperties(numOne, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE,
+                SwingConstants.RIGHT);
+        setComponentProperties(numTwo, new Font("Fira Code", Font.PLAIN, 22), new RoundedBorder(7), Color.WHITE,
+                SwingConstants.RIGHT);
+        setComponentProperties(solution, new Font("Fira Code", Font.PLAIN, 24), new RoundedBorder(7), Color.WHITE,
+                SwingConstants.RIGHT);
         setComponentProperties(addButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(subButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(mulButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(divButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(percentButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
         setComponentProperties(acButton, new Font("Fira Code", Font.BOLD, 22), new RoundedBorder(7), new Color(0xf59806));
-
-        numOne.setHorizontalAlignment(SwingConstants.RIGHT);
-        numTwo.setHorizontalAlignment(SwingConstants.RIGHT);
-        solution.setHorizontalAlignment(SwingConstants.RIGHT);
 
 
         // Adding the components to the panels
@@ -143,10 +142,17 @@ public class CalculatorView extends JFrame {
         }
     }
 
-    // Method to set properties for multiple components
+    // Methods to set properties for multiple components
     private void setComponentProperties(JComponent component, Font font, Border border, Color background) {
         component.setFont(font);
         component.setBorder(border);
         component.setBackground(background);
+    }
+
+    private void setComponentProperties(JTextField component, Font font, Border border, Color background, int alignment) {
+        component.setFont(font);
+        component.setBorder(border);
+        component.setBackground(background);
+        component.setHorizontalAlignment(alignment);
     }
 }
